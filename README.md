@@ -50,9 +50,8 @@ src/
 │   └── Footer/
 ├── App.js
 └── index.js
-
+```
 ---
-
 ## 🚀 Getting Started
 ```bash
 npm install
