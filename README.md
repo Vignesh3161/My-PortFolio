@@ -36,8 +36,9 @@ I enjoy building **secure, high-performance applications** with a focus on real-
 - **React Typed**
 
 ---
-
 ## 📁 Project Structure
+
+```text
 src/
 ├── components/
 │   ├── Header/
@@ -49,6 +50,7 @@ src/
 │   └── Footer/
 ├── App.js
 └── index.js
+
 ---
 
 ## 🚀 Getting Started
