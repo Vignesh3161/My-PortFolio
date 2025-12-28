@@ -40,19 +40,15 @@ I enjoy building **secure, high-performance applications** with a focus on real-
 ## 📁 Project Structure
 src/
 ├── components/
-│ ├── Header
-│ ├── Hero
-│ ├── Projects
-│ ├── About
-│ ├── Skills
-│ ├── Contact
-│ └── Footer
+│   ├── Header/
+│   ├── Hero/
+│   ├── Projects/
+│   ├── About/
+│   ├── Skills/
+│   ├── Contact/
+│   └── Footer/
 ├── App.js
 └── index.js
-
-yaml
-Copy code
-
 ---
 
 ## 🚀 Getting Started
