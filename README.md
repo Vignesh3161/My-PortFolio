@@ -53,7 +53,7 @@ src/
 ```
 ---
 ## 🚀 Getting Started
-```bash
+
 npm install
 npm start
 🌐 Live Portfolio
