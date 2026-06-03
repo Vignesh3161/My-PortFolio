@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { ReactTyped } from 'react-typed';
+import passportPic from '../assets/PassPortSizePic.jpg';
 
 // --- Animations ---
 const float = keyframes`
@@ -217,9 +218,16 @@ const VisualWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   
   @media (max-width: 968px) {
-    height: 400px;
+    height: 450px;
+    margin-top: 1rem;
+    /* Removed order: -1 to keep text above the graphic on mobile/tablet */
+  }
+
+  @media (max-width: 480px) {
+    height: 350px;
   }
 `;
 
@@ -242,9 +250,14 @@ const GeometricRing = styled.div`
     box-shadow: 0 0 15px ${props => props.theme.primary};
   }
 
-  @media (max-width: 768px) {
-    width: 250px;
-    height: 250px;
+  @media (max-width: 968px) {
+    width: 320px;
+    height: 320px;
+  }
+
+  @media (max-width: 480px) {
+    width: 240px;
+    height: 240px;
   }
 `;
 
@@ -255,7 +268,12 @@ const InnerCircle = styled.div`
   border: 1px solid ${props => props.theme.textSecondary}1a;
   border-radius: 50%;
   
-  @media (max-width: 768px) {
+  @media (max-width: 968px) {
+    width: 220px;
+    height: 220px;
+  }
+
+  @media (max-width: 480px) {
     width: 180px;
     height: 180px;
   }
@@ -273,6 +291,7 @@ const ProfileCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   
   /* Corner Accents */
   &::before, &::after {
@@ -292,9 +311,14 @@ const ProfileCard = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 768px) {
-    width: 220px;
-    height: 300px;
+  @media (max-width: 968px) {
+    width: 200px;
+    height: 280px;
+  }
+
+  @media (max-width: 480px) {
+    width: 160px;
+    height: 220px;
   }
 `;
 
@@ -306,6 +330,7 @@ const StatGlass = styled.div`
   border: 1px solid ${props => props.theme.primary}1a;
   border-left: 3px solid ${props => props.theme.primary};
   z-index: 5;
+  white-space: nowrap;
   
   h4 {
     color: ${props => props.theme.primary};
@@ -325,19 +350,59 @@ const StatGlass = styled.div`
   &.stat-1 { top: 20%; right: -20px; animation: ${float} 7s ease-in-out infinite 1s; }
   &.stat-2 { bottom: 20%; left: -40px; animation: ${float} 8s ease-in-out infinite 0.5s; }
 
+  @media (max-width: 1200px) {
+    &.stat-1 { right: 0; }
+    &.stat-2 { left: 0; }
+  }
+
   @media (max-width: 968px) {
-     &.stat-1 { right: -10px; }
-     &.stat-2 { left: -20px; }
+     &.stat-1 { top: 5%; right: 5%; }
+     &.stat-2 { bottom: 5%; left: 5%; }
+     padding: 0.8rem 1.2rem;
+     h4 { font-size: 1.3rem; }
+  }
+
+  @media (max-width: 480px) {
+     &.stat-1 { top: -5%; right: 2%; }
+     &.stat-2 { bottom: -5%; left: 2%; }
+     padding: 0.6rem 1rem;
+     h4 { font-size: 1.1rem; }
+     span { font-size: 0.7rem; }
   }
 `;
 
 const Hero = () => {
   const containerRef = useRef(null);
+  const rectRef = useRef(null);
 
-  // Mouse Move Effect for Spotlight
+  // Mouse Move Effect for Spotlight (Optimized to avoid layout thrashing)
+  useEffect(() => {
+    const updateRect = () => {
+      if (containerRef.current) {
+        rectRef.current = containerRef.current.getBoundingClientRect();
+      }
+    };
+    
+    // Initial size
+    updateRect();
+
+    // Listeners for size/position changes
+    window.addEventListener('resize', updateRect);
+    window.addEventListener('scroll', updateRect);
+
+    return () => {
+      window.removeEventListener('resize', updateRect);
+      window.removeEventListener('scroll', updateRect);
+    };
+  }, []);
+
   const handleMouseMove = (e) => {
-    if (containerRef.current) {
-      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    if (!rectRef.current && containerRef.current) {
+      rectRef.current = containerRef.current.getBoundingClientRect();
+    }
+    
+    if (rectRef.current) {
+      const { left, top, width, height } = rectRef.current;
       const x = ((e.clientX - left) / width) * 100;
       const y = ((e.clientY - top) / height) * 100;
 
@@ -351,7 +416,7 @@ const Hero = () => {
       <ContentWrapper>
         {/* LEFT SIDE */}
         <TextContent>
-          <Overline>Portfolio 2024</Overline>
+          <Overline>MY NAME IS</Overline>
 
           <MainHeading>
             VIGNESH <span>S</span>
@@ -361,7 +426,8 @@ const Hero = () => {
             I am a <ReactTyped
               strings={[
                 "Full Stack Developer",
-                "UI/UX Enthusiast",
+                "MERN Stack Developer",
+                "Java Developer",
                 "Problem Solver"
               ]}
               typeSpeed={50}
@@ -388,21 +454,17 @@ const Hero = () => {
           <InnerCircle />
 
           <ProfileCard>
-            {/* If user has a photo, we can put it here, otherwise keep it abstract/stylized */}
-            <div style={{ textAlign: 'center' }}>
-              <h2 style={{ color: '#FFD700', fontSize: '4rem', margin: 0 }}>VS</h2>
-              <span style={{ color: '#A0A0A0', letterSpacing: '2px', fontSize: '0.8rem' }}>EST. 2024</span>
-            </div>
+            <img src={passportPic} alt="Vignesh S" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </ProfileCard>
 
-          <StatGlass className="stat-1">
+          <StatGlass className="stat-2">
             <h4>12+</h4>
             <span>Projects</span>
           </StatGlass>
 
-          <StatGlass className="stat-2">
-            <h4>5+</h4>
-            <span>Stacks</span>
+          <StatGlass className="stat-1">
+            <h4>2+</h4>
+            <span>internships</span>
           </StatGlass>
 
         </VisualWrapper>

@@ -26,6 +26,13 @@ const themes = {
 };
 
 const GlobalStyle = createGlobalStyle`
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
   * {
     box-sizing: border-box;
     padding: 0;
@@ -60,6 +67,8 @@ const AppContainer = styled.div`
   min-height: 100vh;
   position: relative;
   background-color: ${props => props.theme.secondary};
+  overflow-x: hidden;
+  width: 100%;
 `;
 
 const TopLine = styled.div`
@@ -99,7 +108,6 @@ function App() {
 
         <Hero />
         <Projects />
-        <Resume />
         <About />
         <Skills />
         <Contact />

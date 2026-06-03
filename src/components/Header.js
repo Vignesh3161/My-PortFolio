@@ -6,12 +6,12 @@ const DesktopNav = styled.nav`
   height: 200px;
   width: 350px;
   position: fixed;
-  top: 25px;
+  top: 30px;
   right: 20px;
   background: transparent;
   z-index: 1000;
   overflow: hidden;
-  @media (max-width: 850px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -101,8 +101,14 @@ const MobileNavContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
   margin: 0 auto;
+  flex-wrap: nowrap;
+  gap: 5px;
+  
+  @media (max-width: 400px) {
+    padding: 0 10px;
+  }
 `;
 
 const MobileNavItem = styled.div`
@@ -158,7 +164,7 @@ function Header({ theme }) {
         <DesktopLink href="#projects" className="nav4" theme={theme}>
           <span>PROJECTS</span><i className="fa-solid fa-book-open"></i>
         </DesktopLink>
-        <DesktopLink href="#hero" className="nav5" theme={theme}>
+        <DesktopLink href="#home" className="nav5" theme={theme}>
           <span>HOME</span><i className="fa-solid fa-house"></i>
         </DesktopLink>
       </DesktopNav>
@@ -167,7 +173,7 @@ function Header({ theme }) {
       {/* Mobile Navbar (kept exactly as-is) */}
       <MobileNav theme={theme}>
         <MobileNavContainer>
-          <MobileNavItem theme={theme} onClick={() => handleMobileNavClick('hero')}>
+          <MobileNavItem theme={theme} onClick={() => handleMobileNavClick('home')}>
             <span className="icon">🏠</span>
             <span className="label">HOME</span>
           </MobileNavItem>

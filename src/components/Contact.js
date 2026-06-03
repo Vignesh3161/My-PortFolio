@@ -108,21 +108,21 @@ const Contact = () => {
             <ContactIcon>
               <i className="fas fa-envelope"></i>
             </ContactIcon>
-            <ContactText>vignesh@example.com</ContactText>
+            <ContactText>vickysvignesh3161@gmail.com</ContactText>
           </ContactItem>
 
           <ContactItem>
             <ContactIcon>
               <i className="fas fa-phone"></i>
             </ContactIcon>
-            <ContactText>+91 98765 43210</ContactText>
+            <ContactText>+91 63794 98390</ContactText>
           </ContactItem>
 
           <ContactItem>
             <ContactIcon>
               <i className="fas fa-map-marker-alt"></i>
             </ContactIcon>
-            <ContactText>Chennai, Tamil Nadu, India</ContactText>
+            <ContactText>Tirupur, Tamil Nadu, India</ContactText>
           </ContactItem>
         </ContactInfo>
       </ContactContainer>

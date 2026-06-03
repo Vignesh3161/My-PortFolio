@@ -9,7 +9,7 @@ const Footer = () => {
       <FooterContent>
         <FooterSection>
           <FooterTitle>Vignesh S</FooterTitle>
-          <FooterSubtitle>Web Developer & Designer</FooterSubtitle>
+          <FooterSubtitle>Full Stack Developer & Java Developer</FooterSubtitle>
           <FooterDescription>
             Passionate about creating beautiful, functional, and user-friendly web experiences.
           </FooterDescription>
@@ -43,7 +43,7 @@ const Footer = () => {
               <span>LinkedIn</span>
             </SocialLink>
 
-            <SocialLink href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
+            {/* <SocialLink href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
               <SocialIcon>
                 <i className="fab fa-instagram"></i>
               </SocialIcon>
@@ -55,7 +55,7 @@ const Footer = () => {
                 <i className="fab fa-facebook"></i>
               </SocialIcon>
               <span>Facebook</span>
-            </SocialLink>
+            </SocialLink> */}
 
             <SocialLink href="https://youtube.com/@yourusername" target="_blank" rel="noopener noreferrer">
               <SocialIcon>
@@ -73,19 +73,19 @@ const Footer = () => {
               <ContactIcon>
                 <i className="fas fa-envelope"></i>
               </ContactIcon>
-              <span>vignesh@example.com</span>
+              <span>vickysvignesh3161@gmail.com</span>
             </ContactItem>
             <ContactItem>
               <ContactIcon>
                 <i className="fas fa-phone"></i>
               </ContactIcon>
-              <span>+91 98765 43210</span>
+              <span>+91 63794 98390</span>
             </ContactItem>
             <ContactItem>
               <ContactIcon>
                 <i className="fas fa-map-marker-alt"></i>
               </ContactIcon>
-              <span>Chennai, Tamil Nadu</span>
+              <span>Tirupur, Tamil Nadu</span>
             </ContactItem>
           </ContactInfo>
         </FooterSection>
@@ -94,7 +94,7 @@ const Footer = () => {
       <FooterBottom>
         <FooterBottomContent>
           <Copyright>
-            © {currentYear} Vignesh S. All rights reserved.
+            © {currentYear} My PortFolio
           </Copyright>
           <FooterBottomLinks>
             <FooterBottomLink href="#privacy">Privacy Policy</FooterBottomLink>
@@ -113,10 +113,12 @@ const FooterContainer = styled.footer`
   
   @media (max-width: 768px) {
     padding-top: 40px;
+    padding-bottom: 90px; /* Space to clear sticky bottom mobile nav */
   }
   
   @media (max-width: 480px) {
     padding-top: 30px;
+    padding-bottom: 80px; /* Space to clear sticky bottom mobile nav */
   }
 `;
 

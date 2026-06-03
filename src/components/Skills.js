@@ -158,8 +158,21 @@ const Timeline = styled.div`
   border: 1px solid ${(props) => props.theme.primary}30;
   background: ${(props) => props.theme.tertiary}f5;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 25px;
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 12px;
+    text-align: center;
+  }
 `;
 
 const TimelineItem = styled.div`

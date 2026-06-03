@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import passportPic from '../assets/PassPortSizePic.jpg';
 
 const AboutSection = styled.section`
   padding: 120px 0;
@@ -306,19 +307,24 @@ const ImageContainer = styled.div`
   height: 500px;
   position: relative;
   
+  @media (max-width: 1200px) {
+    width: 320px;
+    height: 400px;
+  }
+  
   @media (max-width: 1024px) {
-    width: 350px;
-    height: 440px;
+    width: 280px;
+    height: 350px;
   }
   
   @media (max-width: 768px) {
-    width: 300px;
-    height: 375px;
+    width: 260px;
+    height: 325px;
   }
   
   @media (max-width: 480px) {
-    width: 250px;
-    height: 310px;
+    width: 220px;
+    height: 275px;
   }
   
   &::before {
@@ -493,8 +499,7 @@ function About() {
                 I specialize in backend development with <strong>Java and Spring Boot</strong>, and I’m also skilled in the
                 <strong>MERN stack (MongoDB, Express, React, Node.js)</strong> to build scalable, modern web applications.
                 I have completed internships at <strong>Cognify Technology</strong> and <strong>Altalya Solutions</strong>,
-                where I worked on Java-based projects. My recent work includes a <strong>MERN Complaint Management System</strong>
-                with features like user authentication and payment gateway integration.My journey started with curiosity and self-learning, which has grown into hands-on experience through
+                with features like user authentication and payment gateway integration. My journey started with curiosity and self-learning, which has grown into hands-on experience through
                 internships, projects, and certifications in <strong>Java, JavaScript, and Python</strong>. I’m a dedicated
                 problem solver, always eager to explore new technologies and create meaningful digital experiences through
                 clean, efficient, and high-quality code.
@@ -516,15 +521,15 @@ function About() {
 
             <AboutImage>
               <ImageContainer>
-                <Image>👨‍💻</Image>
+                <Image as="img" src={passportPic} alt="Vignesh S" style={{ objectFit: 'cover' }} />
               </ImageContainer>
             </AboutImage>
           </AboutContent>
 
           <StatsSection>
             <StatCard>
-              <span className="number">Python certifications</span>
-              <span className="label">KTNEST </span>
+              <span className="number">KTNEST</span>
+              <span className="label">Python Certification</span>
             </StatCard>
             <StatCard>
               <span className="number">3+</span>

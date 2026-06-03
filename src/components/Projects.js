@@ -37,6 +37,7 @@ const BackgroundPattern = styled.div`
 
 const Container = styled.div`
   max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 60px;
   position: relative;
@@ -328,14 +329,18 @@ const ProjectImage = styled.div`
     border-radius: 14px;
   }
   
-  img {
+  /* Placeholder styles */
+  .placeholder {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(3.5rem, 8vw, 5rem);
     transition: transform 0.4s ease;
   }
-  
-  ${ProjectCard}:hover & img {
+
+  ${ProjectCard}:hover & .placeholder {
     transform: scale(1.1);
     
     @media (max-width: 768px) {
@@ -557,7 +562,8 @@ const Projects = () => {
       title: "Portfolio Website",
       description: "A modern, responsive portfolio website built with React.js featuring smooth animations and a clean design. This project showcases my frontend skills and attention to detail.",
       technologies: ["React", "CSS3", "JavaScript", "HTML5", "Styled-Components"],
-      image: "https://via.placeholder.com/600x250/4a90e2/ffffff?text=Portfolio+Website",
+      gradient: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
+      emoji: "💻",
       github: "https://github.com/yourusername/portfolio",
       live: "https://yourportfolio.com",
       featured: true
@@ -567,7 +573,8 @@ const Projects = () => {
       title: "E-commerce Platform",
       description: "A full-stack e-commerce application with user authentication, product management, and payment integration using modern web technologies.",
       technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      image: "https://via.placeholder.com/600x250/50c878/ffffff?text=E-commerce+Platform",
+      gradient: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+      emoji: "🛒",
       github: "https://github.com/yourusername/ecommerce",
       live: "https://yourecommerce.com",
       featured: false
@@ -577,7 +584,8 @@ const Projects = () => {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates and team collaboration features built with modern web technologies.",
       technologies: ["React", "Firebase", "Material-UI", "JavaScript", "Real-time DB"],
-      image: "https://via.placeholder.com/600x250/ff6b6b/ffffff?text=Task+Management+App",
+      gradient: "linear-gradient(135deg, #ff9966 0%, #ff5e62 100%)",
+      emoji: "📋",
       github: "https://github.com/yourusername/taskapp",
       live: "https://yourtaskapp.com",
       featured: false
@@ -587,7 +595,8 @@ const Projects = () => {
       title: "Weather Dashboard",
       description: "A weather application that displays current weather conditions and forecasts using external APIs with beautiful data visualization.",
       technologies: ["JavaScript", "HTML5", "CSS3", "Weather API", "Chart.js"],
-      image: "https://via.placeholder.com/600x250/ffd93d/000000?text=Weather+Dashboard",
+      gradient: "linear-gradient(135deg, #FDB931 0%, #9F2241 100%)",
+      emoji: "🌤️",
       github: "https://github.com/yourusername/weather",
       live: "https://yourweather.com",
       featured: false
@@ -597,7 +606,8 @@ const Projects = () => {
       title: "AI Chat Assistant",
       description: "An intelligent chatbot powered by machine learning that provides personalized assistance and natural language processing capabilities.",
       technologies: ["Python", "TensorFlow", "React", "FastAPI", "PostgreSQL"],
-      image: "https://via.placeholder.com/600x250/9c27b0/ffffff?text=AI+Chat+Assistant",
+      gradient: "linear-gradient(135deg, #654ea3 0%, #eaafc8 100%)",
+      emoji: "🤖",
       github: "https://github.com/yourusername/ai-chat",
       live: "https://your-aichat.com",
       featured: false
@@ -620,7 +630,9 @@ const Projects = () => {
                 <HoverBackdrop />
                 <CornerAccent />
                 <ProjectImage>
-                  <img src={project.image} alt={project.title} />
+                  <div className="placeholder" style={{ background: project.gradient }}>
+                    {project.emoji}
+                  </div>
                 </ProjectImage>
 
                 <ProjectContent>
