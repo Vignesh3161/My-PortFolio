@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -7,11 +7,6 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-
-
-
-import ProfilePhoto from './components/ProfilePhoto';
-import Resume from './components/Resume';
 
 const themes = {
   midnight: {
@@ -82,7 +77,7 @@ const TopLine = styled.div`
 `;
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(() => {
+  const [currentTheme] = useState(() => {
     if (typeof window === 'undefined') {
       return 'midnight';
     }
