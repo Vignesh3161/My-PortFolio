@@ -29,39 +29,18 @@ const Footer = () => {
         <FooterSection>
           <FooterSectionTitle>Connect</FooterSectionTitle>
           <SocialLinks>
-            <SocialLink href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+            <SocialLink href="https://github.com/Vignesh3161" target="_blank" rel="noopener noreferrer">
               <SocialIcon>
                 <i className="fab fa-github"></i>
               </SocialIcon>
               <span>GitHub</span>
             </SocialLink>
 
-            <SocialLink href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+            <SocialLink href="https://www.linkedin.com/in/vignesh-s-software/" target="_blank" rel="noopener noreferrer">
               <SocialIcon>
                 <i className="fab fa-linkedin"></i>
               </SocialIcon>
               <span>LinkedIn</span>
-            </SocialLink>
-
-            {/* <SocialLink href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer">
-              <SocialIcon>
-                <i className="fab fa-instagram"></i>
-              </SocialIcon>
-              <span>Instagram</span>
-            </SocialLink>
-
-            <SocialLink href="https://facebook.com/yourusername" target="_blank" rel="noopener noreferrer">
-              <SocialIcon>
-                <i className="fab fa-facebook"></i>
-              </SocialIcon>
-              <span>Facebook</span>
-            </SocialLink> */}
-
-            <SocialLink href="https://youtube.com/@yourusername" target="_blank" rel="noopener noreferrer">
-              <SocialIcon>
-                <i className="fab fa-youtube"></i>
-              </SocialIcon>
-              <span>YouTube</span>
             </SocialLink>
           </SocialLinks>
         </FooterSection>

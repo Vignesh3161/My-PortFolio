@@ -201,45 +201,45 @@ const skillGroups = [
     title: 'Core Stack',
     label: 'Backend & APIs',
     skills: [
-      { name: 'Java', level: 95, caption: 'OOP · Streams', icon: java },
-      { name: 'Spring Boot', level: 90, caption: 'REST · Security', icon: springboot },
-      { name: 'Node.js', level: 82, caption: 'Express · Auth', icon: node },
+      { name: 'Java', level: 85, caption: 'OOP · Spring Boot', icon: java },
+      { name: 'Node.js', level: 88, caption: 'Express · Auth · JWT', icon: node },
+      { name: 'Spring Boot', level: 82, caption: 'REST · Security · JPA', icon: springboot },
     ],
   },
   {
     title: 'Frontend Energy',
     label: 'Interfaces',
     skills: [
-      { name: 'React', level: 92, caption: 'Hooks · SPA', icon: reactLogo },
-      { name: 'JavaScript', level: 94, caption: 'ES6+ · Tooling', icon: javascript },
-      { name: 'Responsive UI', level: 88, caption: 'Styled Components', icon: vscode },
+      { name: 'React.js', level: 83, caption: 'Hooks · Vite · SPA', icon: reactLogo },
+      { name: 'JavaScript', level: 87, caption: 'ES6+ · Async · DOM', icon: javascript },
+      { name: 'HTML5 / CSS3', level: 85, caption: 'Responsive · Flexbox', icon: vscode },
     ],
   },
   {
     title: 'Data Layer',
     label: 'Databases',
     skills: [
-      { name: 'MongoDB', level: 84, caption: 'Aggregation · Atlas', icon: mongodb },
-      { name: 'MySQL', level: 80, caption: 'Schema · Joins', icon: mysql },
-      { name: 'Python', level: 70, caption: 'Automation', icon: python },
+      { name: 'PostgreSQL', level: 83, caption: 'ACID · Transactions', icon: mysql },
+      { name: 'MongoDB', level: 82, caption: 'Mongoose · Geospatial', icon: mongodb },
+      { name: 'Redis', level: 75, caption: 'Pub/Sub · Rate Limiting', icon: vscode },
     ],
   },
   {
-    title: 'QA & Delivery',
+    title: 'DevOps & Delivery',
     label: 'Ship Fast',
     skills: [
-      { name: 'Postman', level: 78, caption: 'API Suites', icon: postman },
-      { name: 'Git/GitHub', level: 90, caption: 'PR Flow', icon: github },
-      { name: 'VS Code', level: 85, caption: 'Debug · LiveShare', icon: vscode },
+      { name: 'Docker', level: 70, caption: 'Compose · Containers', icon: vscode },
+      { name: 'Git / GitHub', level: 88, caption: 'Branching · PR Flow', icon: github },
+      { name: 'Postman', level: 82, caption: 'API Testing · Suites', icon: postman },
     ],
   },
 ];
 
 const timelineData = [
-  { label: 'STACK', value: 'MERN + Spring', detail: 'React · Node · Java' },
-  { label: 'DELIVERY', value: '12+ Projects', detail: 'Web & API builds' },
-  { label: 'WORKFLOW', value: 'Agile Pods', detail: '2-week sprints' },
-  { label: 'TOOLS', value: 'CI automation', detail: 'GitHub Actions' },
+  { label: 'STACK', value: 'MERN + Java', detail: 'React · Node · Spring Boot' },
+  { label: 'EXPERIENCE', value: '8 Months', detail: 'Production Internships' },
+  { label: 'PROJECTS', value: '5+ Built', detail: 'Fintech · EMS · KYC' },
+  { label: 'SECURITY', value: 'JWT · RBAC', detail: 'AES-256 · OAuth2' },
 ];
 
 function Skills() {

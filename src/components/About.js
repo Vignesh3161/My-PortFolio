@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import passportPic from '../assets/PassPortSizePic.jpg';
 
 const AboutSection = styled.section`
@@ -9,6 +9,7 @@ const AboutSection = styled.section`
   ${(props) => props.theme.secondary} 100%);
   position: relative;
   border-bottom: 3px solid ${(props) => props.theme.primary};
+  overflow: hidden;
   
   @media (max-width: 1024px) {
     padding: 100px 0;
@@ -21,6 +22,66 @@ const AboutSection = styled.section`
   @media (max-width: 480px) {
     padding: 60px 0;
   }
+`;
+
+const float = keyframes`
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(360deg);
+  }
+`;
+
+const floatReverse = keyframes`
+  0% {
+    transform: translateY(0px) rotate(360deg);
+  }
+  50% {
+    transform: translateY(20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+`;
+
+const AnimatedBg = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+`;
+
+const Blob = styled.div`
+  position: absolute;
+  background: radial-gradient(circle, ${props => props.theme.primary}12 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+`;
+
+const Blob1 = styled(Blob)`
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  animation: ${float} 20s infinite ease-in-out;
+`;
+
+const Blob2 = styled(Blob)`
+  width: 500px;
+  height: 500px;
+  bottom: -150px;
+  right: -150px;
+  animation: ${floatReverse} 25s infinite ease-in-out;
+  background: radial-gradient(circle, ${props => props.theme.primary}08 0%, transparent 70%);
 `;
 
 const Container = styled.div`
@@ -463,25 +524,29 @@ function About() {
   const skills = [
     {
       title: "Frontend :",
-      description: "React, HTML, CSS, JavaScript,  Responsive Design"
+      description: "React.js, HTML5, CSS3, JavaScript (ES6+), Vite, Responsive Design"
     },
     {
       title: "Backend :",
-      description: "Java, Node.js, Python, Express, SpringBoot"
+      description: "Node.js, Express.js, Java, Spring Boot, REST APIs, WebSockets"
     },
     {
-      title: "Tools",
-      description: "GitHub, Post Man, Strapi, VS Code  "
+      title: "Database & Tools :",
+      description: "PostgreSQL, MongoDB, MySQL, Redis, Docker, Git, Postman"
     },
     {
-      title: "Problem Solving",
-      description: "Analytical Thinking, Creative Solutions"
+      title: "Problem Solving :",
+      description: "DSA, System Design, Analytical Thinking, Clean Code"
     }
   ];
 
   return (
     <section id="about">
       <AboutSection>
+        <AnimatedBg>
+          <Blob1 />
+          <Blob2 />
+        </AnimatedBg>
         <Container>
           <SectionHeader>
             <h2>About Me</h2>
@@ -493,18 +558,19 @@ function About() {
 
           <AboutContent>
             <AboutText>
-              <h3>Java Backend & MERN Stack Developer</h3>
+              <h3>Full Stack Developer — MERN & Java Spring Boot</h3>
               <p>
-                I'm <strong>Vignesh S</strong>, a passionate developer currently pursuing my Master’s in Computer Applications (MCA).
-                I specialize in backend development with <strong>Java and Spring Boot</strong>, and I’m also skilled in the
-                <strong>MERN stack (MongoDB, Express, React, Node.js)</strong> to build scalable, modern web applications.
-                I have completed internships at <strong>Cognify Technology</strong> and <strong>Altalya Solutions</strong>,
-                with features like user authentication and payment gateway integration. My journey started with curiosity and self-learning, which has grown into hands-on experience through
-                internships, projects, and certifications in <strong>Java, JavaScript, and Python</strong>. I’m a dedicated
-                problem solver, always eager to explore new technologies and create meaningful digital experiences through
-                clean, efficient, and high-quality code.
+                I'm <strong>Vignesh S</strong>, a passionate developer currently pursuing my Master's in
+                Computer Applications (MCA) at RVS College of Arts and Science, Coimbatore (2026).
+                I specialize in backend development with <strong>Node.js, Express.js</strong>, and
+                <strong> Java Spring Boot</strong>, building production-grade systems including
+                real-time dispatch engines, transactional financial ledgers, and secure multi-tenant APIs.
+                I completed a 6-month internship at <strong>Flare Minds Technology</strong> as a Full Stack
+                Developer and a Java internship at <strong>Altalya Solutions Pvt. Ltd.</strong>, gaining
+                hands-on experience with <strong>Redis, WebSockets, Docker, PostgreSQL,</strong> and
+                <strong> JWT-based security architectures</strong>. I'm a dedicated problem solver, always
+                eager to explore new technologies and deliver clean, efficient, high-quality code.
               </p>
-
 
               <SkillsList>
                 <h4>Key Skills & Expertise</h4>
@@ -528,20 +594,20 @@ function About() {
 
           <StatsSection>
             <StatCard>
-              <span className="number">KTNEST</span>
-              <span className="label">Python Certification</span>
+              <span className="number">Java</span>
+              <span className="label">Full Stack Certified</span>
             </StatCard>
             <StatCard>
-              <span className="number">3+</span>
-              <span className="label">Years Experience</span>
+              <span className="number">8+</span>
+              <span className="label">Months Experience</span>
             </StatCard>
             <StatCard>
-              <span className="number">100%</span>
-              <span className="label">Client Satisfaction</span>
+              <span className="number">5+</span>
+              <span className="label">Projects Built</span>
             </StatCard>
             <StatCard>
-              <span className="number">24/7</span>
-              <span className="label">Support Available</span>
+              <span className="number">2</span>
+              <span className="label">Internships Completed</span>
             </StatCard>
           </StatsSection>
         </Container>

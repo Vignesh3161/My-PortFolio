@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const ProjectsSection = styled.section`
@@ -172,6 +172,9 @@ const ProjectCard = styled.div`
   transition: all 0.4s ease;
   transform-style: preserve-3d;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   
   @media (max-width: 1024px) {
     padding: 35px;
@@ -228,45 +231,6 @@ const ProjectCard = styled.div`
     
     @media (max-width: 480px) {
       transform: translateY(-8px) rotateY(2deg);
-    }
-  }
-  
-  &.featured {
-    grid-column: span 2;
-    background: linear-gradient(135deg, ${props => props.theme.tertiary}, ${props => props.theme.primary}15);
-    
-    @media (max-width: 768px) {
-      grid-column: span 1;
-    }
-    
-    &::after {
-      content: '⭐ FEATURED';
-      position: absolute;
-      top: -15px;
-      right: 30px;
-      background: ${props => props.theme.primary};
-      color: ${props => props.theme.secondary};
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      
-      @media (max-width: 768px) {
-        top: -12px;
-        right: 25px;
-        padding: 6px 16px;
-        font-size: 0.8rem;
-        border-radius: 16px;
-      }
-      
-      @media (max-width: 480px) {
-        top: -10px;
-        right: 20px;
-        padding: 5px 12px;
-        font-size: 0.7rem;
-        border-radius: 14px;
-      }
     }
   }
 `;
@@ -350,6 +314,10 @@ const ProjectImage = styled.div`
 `;
 
 const ProjectContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
   h3 {
     font-size: 1.8rem;
     color: ${props => props.theme.text};
@@ -370,28 +338,60 @@ const ProjectContent = styled.div`
       margin-bottom: 10px;
     }
   }
+`;
+
+const ProjectDescription = styled.p`
+  font-size: 1.1rem;
+  color: ${props => props.theme.textSecondary};
+  line-height: 1.6;
+  margin-bottom: 15px;
   
-  p {
-    font-size: 1.1rem;
-    color: ${props => props.theme.textSecondary};
-    line-height: 1.6;
-    margin-bottom: 20px;
-    
-    @media (max-width: 1024px) {
-      font-size: 1.05rem;
-      margin-bottom: 18px;
-    }
-    
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      margin-bottom: 16px;
-    }
-    
-    @media (max-width: 480px) {
-      font-size: 0.95rem;
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
+  /* Conditional truncation */
+  display: ${props => props.$expanded ? 'block' : '-webkit-box'};
+  -webkit-line-clamp: ${props => props.$expanded ? 'unset' : '3'};
+  -webkit-box-orient: vertical;
+  overflow: ${props => props.$expanded ? 'visible' : 'hidden'};
+  text-overflow: ellipsis;
+
+  @media (max-width: 1024px) {
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+`;
+
+const ReadMoreBtn = styled.button`
+  background: none;
+  border: none;
+  color: ${props => props.theme.primary};
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: ${props => props.theme.primary}dd;
+    text-decoration: underline;
+  }
+
+  i {
+    transition: transform 0.3s ease;
+    transform: ${props => props.$expanded ? 'rotate(180deg)' : 'rotate(0)'};
   }
 `;
 
@@ -448,6 +448,7 @@ const TechTag = styled.span`
 const ProjectLinks = styled.div`
   display: flex;
   gap: 15px;
+  margin-top: auto;
   
   @media (max-width: 768px) {
     gap: 12px;
@@ -556,62 +557,57 @@ const CTA = styled.div`
 `;
 
 const Projects = () => {
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleExpand = (id) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
   const projects = [
     {
       id: 1,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website built with React.js featuring smooth animations and a clean design. This project showcases my frontend skills and attention to detail.",
-      technologies: ["React", "CSS3", "JavaScript", "HTML5", "Styled-Components"],
-      gradient: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)",
-      emoji: "💻",
-      github: "https://github.com/yourusername/portfolio",
-      live: "https://yourportfolio.com",
-      featured: true
+      title: "Core Banking & Financial Security",
+      description:
+        "Digital banking system featuring secure transactions, role-based access, MFA, audit trails, and modern banking operations",
+      technologies: [
+        "React",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Redis",
+        "JWT",
+        "AES-256 Encryption"
+      ],
+      gradient: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)",
+      emoji: "🏦",
+      github: "https://github.com/Vignesh3161/banking-system",
+      live: "https://bank-management-system-19dp.onrender.com/",
+      featured: false
     },
     {
       id: 2,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce application with user authentication, product management, and payment integration using modern web technologies.",
-      technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-      gradient: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
-      emoji: "🛒",
-      github: "https://github.com/yourusername/ecommerce",
-      live: "https://yourecommerce.com",
-      featured: false
-    },
-    {
-      id: 3,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates and team collaboration features built with modern web technologies.",
-      technologies: ["React", "Firebase", "Material-UI", "JavaScript", "Real-time DB"],
-      gradient: "linear-gradient(135deg, #ff9966 0%, #ff5e62 100%)",
-      emoji: "📋",
-      github: "https://github.com/yourusername/taskapp",
-      live: "https://yourtaskapp.com",
-      featured: false
-    },
-    {
-      id: 4,
-      title: "Weather Dashboard",
-      description: "A weather application that displays current weather conditions and forecasts using external APIs with beautiful data visualization.",
-      technologies: ["JavaScript", "HTML5", "CSS3", "Weather API", "Chart.js"],
-      gradient: "linear-gradient(135deg, #FDB931 0%, #9F2241 100%)",
-      emoji: "🌤️",
-      github: "https://github.com/yourusername/weather",
-      live: "https://yourweather.com",
-      featured: false
-    },
-    {
-      id: 5,
-      title: "AI Chat Assistant",
-      description: "An intelligent chatbot powered by machine learning that provides personalized assistance and natural language processing capabilities.",
-      technologies: ["Python", "TensorFlow", "React", "FastAPI", "PostgreSQL"],
-      gradient: "linear-gradient(135deg, #654ea3 0%, #eaafc8 100%)",
-      emoji: "🤖",
-      github: "https://github.com/yourusername/ai-chat",
-      live: "https://your-aichat.com",
-      featured: false
+      title: "Employee Management System",
+      description:
+        "Full-stack employee management platform with secure JWT authentication, employee records, department management, leave tracking, and attendance monitoring. Built with Spring Boot and PostgreSQL following enterprise-grade architecture principles.",
+      technologies: [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "PostgreSQL",
+        "JWT",
+        "Hibernate"
+      ],
+      gradient: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)",
+      emoji: "👨‍💼",
+      github: "https://github.com/Vignesh3161/Employee_Management_System",
+      live: "https://employee-management-system-p86u.onrender.com/",
+      featured: true
     }
+
   ];
 
   return (
@@ -625,42 +621,54 @@ const Projects = () => {
           </SectionHeader>
 
           <ProjectsGrid>
-            {projects.map((project) => (
-              <ProjectCard key={project.id} className={project.featured ? 'featured' : ''}>
-                <HoverBackdrop />
-                <CornerAccent />
-                <ProjectImage>
-                  <div className="placeholder" style={{ background: project.gradient }}>
-                    {project.emoji}
-                  </div>
-                </ProjectImage>
+            {projects.map((project) => {
+              const isExpanded = !!expandedCards[project.id];
+              return (
+                <ProjectCard key={project.id}>
+                  <HoverBackdrop />
+                  <CornerAccent />
+                  <ProjectImage>
+                    <div className="placeholder" style={{ background: project.gradient }}>
+                      {project.emoji}
+                    </div>
+                  </ProjectImage>
 
-                <ProjectContent>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <ProjectContent>
+                    <h3>{project.title}</h3>
 
-                  <TechTags>
-                    {project.technologies.map((tech, index) => (
-                      <TechTag key={index}>{tech}</TechTag>
-                    ))}
-                  </TechTags>
+                    <ProjectDescription $expanded={isExpanded}>
+                      {project.description}
+                    </ProjectDescription>
 
-                  <ProjectLinks>
-                    <ProjectButton href={project.github} target="_blank" rel="noopener noreferrer" type="secondary">
-                      <i className="fab fa-github"></i> GitHub
-                    </ProjectButton>
-                    <ProjectButton href={project.live} target="_blank" rel="noopener noreferrer" type="primary">
-                      <i className="fas fa-external-link-alt"></i> Live Demo
-                    </ProjectButton>
-                  </ProjectLinks>
-                </ProjectContent>
-              </ProjectCard>
-            ))}
+                    {project.description.length > 100 && (
+                      <ReadMoreBtn $expanded={isExpanded} onClick={() => toggleExpand(project.id)}>
+                        {isExpanded ? 'Read Less' : 'Read More'} <i className="fas fa-chevron-down"></i>
+                      </ReadMoreBtn>
+                    )}
+
+                    <TechTags>
+                      {project.technologies.map((tech, index) => (
+                        <TechTag key={index}>{tech}</TechTag>
+                      ))}
+                    </TechTags>
+
+                    <ProjectLinks>
+                      <ProjectButton href={project.github} target="_blank" rel="noopener noreferrer" type="secondary">
+                        <i className="fab fa-github"></i> GitHub
+                      </ProjectButton>
+                      <ProjectButton href={project.live} target="_blank" rel="noopener noreferrer" type="primary">
+                        <i className="fas fa-external-link-alt"></i> Live Demo
+                      </ProjectButton>
+                    </ProjectLinks>
+                  </ProjectContent>
+                </ProjectCard>
+              );
+            })}
           </ProjectsGrid>
 
           <CTA>
             <p>Interested in seeing more of my work?</p>
-            <ProjectButton href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" type="primary">
+            <ProjectButton href="https://github.com/Vignesh3161" target="_blank" rel="noopener noreferrer" type="primary">
               <i className="fab fa-github"></i> View More on GitHub
             </ProjectButton>
           </CTA>

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/static/js/main.456be67e.js",
+    "static/media/PassPortSizePic.jpg": "/static/media/PassPortSizePic.17b876a6a6818f27cc2f.jpg",
+    "static/media/github.png": "/static/media/github.b8d7a0198cdfe60651ed.png",
+    "static/media/python.png": "/static/media/python.12a5ee16825431bb9b88.png",
+    "static/media/JavaLogo.png": "/static/media/JavaLogo.0dbe756acd76cd4d98a8.png",
+    "static/media/postman.png": "/static/media/postman.8d48aee4f4b03bfe4a10.png",
+    "index.html": "/index.html",
+    "main.456be67e.js.map": "/static/js/main.456be67e.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.456be67e.js"
+  ]
+}
