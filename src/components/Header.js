@@ -46,7 +46,7 @@ const DesktopLink = styled.a`
     border: 3px solid ${props => props.theme.primary};
     margin-top: 25px;
     padding: 8px;
-    transition: 0.5s ease;
+    // transition: 0.3s ease;
     font-size: 22px;
     border-radius: 50%;
     color: ${props => props.theme.primary};
@@ -54,7 +54,7 @@ const DesktopLink = styled.a`
 
   span {
     background: ${props => props.theme.primary};
-    transition: 0.3s ease;
+    // transition: 0.3s ease;
   }
 
   &:hover {
@@ -64,20 +64,22 @@ const DesktopLink = styled.a`
     height: 200px;
     margin-top: 10px;
     justify-content: center;
+    // transition: 0.3s ease;
+
   }
 
   &:hover i {
     background: ${props => props.theme.primary};
     color: ${props => props.theme.secondary};
     display: none;
-  transition: all 0.3s ease;
+  //  transition: all 0.3s ease;
 
   }
 
   &:hover span {
     background: ${props => props.theme.primary};
     color: ${props => props.theme.secondary};
-  transition: all 0.3s ease;
+    // transition: all 0.3s ease;
 
   }
 `;

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import java from '../assets/JavaLogo.png';
 import springboot from '../assets/springboot.png';
-import python from '../assets/python.png';
 import node from '../assets/nodejs.png';
 import reactLogo from '../assets/react.png';
 import mongodb from '../assets/mongodb.png';
